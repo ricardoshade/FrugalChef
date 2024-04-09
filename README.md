@@ -1,2 +1,2 @@
 # FrugalChef
-An app to generate recipes within a specific budget.
+An app to generate weekly recipes within a specific budget.
