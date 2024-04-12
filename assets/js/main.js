@@ -31,7 +31,7 @@ const apiCall = BuildEdamamCall(modalObj);
     // displaycards
     
     
-    }).catch(error => console.log('fetch failed'));
+    }).catch(error => console.log(`fetch failed ${error}`));
 }
 
 
