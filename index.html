@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.1/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+
     <title>Frugal Chef</title>
 </head>
 
@@ -17,7 +20,74 @@
         <button class="select-none rounded-lg bg-yellow-900 py-3 px-6 text-center align-middle text-xs font-bold text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-yellow-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:opacity-50 disabled:shadow-none" type="button" data-dialog-target="sign-in-dialog">
         Generate Recipes
         </button>
-        
+        <div data-dialog-backdrop="sign-in-dialog" data-dialog-backdrop-close="true"
+        class="pointer-events-none fixed inset-0 z-[999] grid h-screen w-screen place-items-center bg-black bg-opacity-60 opacity-0 backdrop-blur-sm transition-opacity duration-300">
+        <div data-dialog="sign-in-dialog"
+        class="relative mx-auto flex w-full max-w-[24rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
+        <div class="flex flex-col gap-4 p-6">
+            <h4
+            class="block font-sans text-2xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+            Generate Recipes
+            </h4>
+            <h6
+            class="block -mb-2 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-inherit">
+            Number of Meals:
+            </h6>
+            <div class="relative h-11 w-full min-w-[200px]">
+            <input
+                class="w-full h-full px-3 py-3 font-sans text-sm font-normal transition-all bg-transparent border rounded-md peer border-blue-gray-200 border-t-transparent text-blue-gray-700 outline outline-0 placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                placeholder=" " />
+            <label
+                class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.1] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-gray-900 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
+                1-7
+            </label>
+            </div>
+            <h6
+            class="block -mb-2 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-inherit">
+            Budget:
+        </h6>
+        <div class="relative h-11 w-full min-w-[200px]">
+            <input
+            class="w-full h-full px-3 py-3 font-sans text-sm font-normal transition-all bg-transparent border rounded-md peer border-blue-gray-200 border-t-transparent text-blue-gray-700 outline outline-0 placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+            placeholder=" " />
+            <label
+            class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.1] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-gray-900 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">e.g. 100
+            </label>
+        </div>
+            <h6
+            class="block -mb-2 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-inherit">Meal Time:
+            </h6>
+
+            <div class="dropdown">
+                <div tabindex="0" role="button" class="btn m-1">Options</div>
+                    <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                        <li><a>Breakfast</a></li>
+                        <li><a>Lunch</a></li>
+                        <li><a>Dinner</a></li>
+                    </ul>
+            </div>
+            <h6
+            class="block -mb-2 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-inherit">
+            Allergens:
+            </h6> 
+            <button id="dropdownBgHoverButton" data-dropdown-toggle="dropdownBgHover" class="text-black bg-grey-700 hover:bg-grey-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button"><div tabindex="0" role="button" class="btn m-1">Options</div><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+                
+                <!-- Dropdown menu -->
+                <div id="dropdownBgHover" class="dropdown dropdown-top z-10 hidden w-48 bg-white rounded-lg shadow dark:bg-gray-700">
+                    <ul class="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownBgHoverButton" id="health-list">
+                    </ul>
+                </div>
+            </div>
+            
+        <div class="p-6 pt-0">
+            <button
+            class="block w-full select-none rounded-lg bg-gradient-to-tr from-gray-900 to-gray-800 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            type="button">
+                Generate
+            </button>
+        </div>
+        </div>
+    </div>  
         <section id="all-containers">
             <section id="modal-pop-up"> <!-- Button to generate meal plans -->
                 <h2>Generate List</h2>
@@ -67,7 +137,7 @@
                 <p id="dinner-day-7"></p>
                 <span id="cost-day-7"></span>
             </section>
-             <section id="shopping-list-card"> <!-- Shopping list card -->
+    <section id="shopping-list-card"> <!-- Shopping list card -->
                 <h3>
                     Shopping List
                 </h3>
@@ -82,6 +152,8 @@
     <footer>
 
     </footer>
+    <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/dialog.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>
