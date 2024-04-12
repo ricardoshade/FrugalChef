@@ -22,23 +22,48 @@ const apiCall = BuildEdamamCall(modalObj);
     
     }).then(function (data){
         console.log(data);
-    // make cards that hold data
+        //create array to store total ingredients for shopping list
+        const ingredientsArry = [];
+    // get cards that hold data
+        const recipeCards = document.getElementsByClassName('recipe-card');
+    // set card data
+        for(let i = 0; i< recipeCards.length; i++){
+            const title = recipeCards[i].getElementsByClassName('meal-title');
+            const url = recipeCards[i].getElementsByClassName('meal-description');
+            const image = recipeCards[i].querySelector('img');
+
+            title[0].textContent = data.hits[i].recipe.label;
+            console.log(url[0].textContent)
+            url[0].textContent = data.hits[i].recipe.url;
+            image.setAttribute('src', data.hits[i].recipe.image );
+            
+            // tally ingredients of displayed recipes
+            for(ingredient of data.hits[i].recipe.ingredients){
+                ingredientsArry.push(ingredient.food)
+            }
+
+
+
+
+        }
+        console.log(ingredientsArry);
     // store excess for later same interaction use
-    // tally ingredients of displayed recipes
-    // get costs of recipes
-    // total costs
-    // display shopping list with total cost
-    // displaycards
+    sessionStorage.setItem('random-recipes' , JSON.stringify(data));
+
+    // ? get costs of recipes
+    // ? total costs
+    // ? display shopping list with total cost
     
     
-    }).catch(error => console.log(`fetch failed ${error}`));
+    
+    }).catch(error => console.log(`${error}`));
 }
 
 
 
 function BuildEdamamCall(searchparamsobj){
 
-    let basecall = `https://api.edamam.com/api/recipes/v2?type=any&app_id=${appId}&app_key=${appkey}&field=label&field=source&field=url&field=ingredients&field=totalTime&field=cuisineType&field=mealType&random=true`;
+    let basecall = `https://api.edamam.com/api/recipes/v2?type=any&app_id=${appId}&app_key=${appkey}&field=label&field=source&field=url&field=ingredients&field=totalTime&field=cuisineType&field=mealType&field=image&random=true`;
     if (searchparamsobj.mealtime){
        basecall = basecall.concat("&mealType=" + searchparamsobj.mealtime);
     }
