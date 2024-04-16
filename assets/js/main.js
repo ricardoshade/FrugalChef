@@ -1,5 +1,6 @@
 const appId = '196c237a';
 const appkey = '9d8fce1dbd4a46fa288a0e8aa92c11e6';
+const shoppingList = document.getElementById('shopping-list-items');
 const testModalObj = {
 
     mealtime: "Dinner",
@@ -11,7 +12,7 @@ function FetchRecipesAndDisplay(event){
 
   
  // create modalObj with modal inputs
- const modalObj = event 
+ const modalObj = event ;
 
 const apiCall = BuildEdamamCall(modalObj);
 
@@ -23,7 +24,7 @@ const apiCall = BuildEdamamCall(modalObj);
     }).then(function (data){
         console.log(data);
         //create array to store total ingredients for shopping list
-        const ingredientsArry = [];
+        const ingredientsObj = {};
     // get cards that hold data
         const recipeCards = document.getElementsByClassName('recipe-card');
     // set card data
@@ -33,20 +34,49 @@ const apiCall = BuildEdamamCall(modalObj);
             const image = recipeCards[i].querySelector('img');
 
             title[0].textContent = data.hits[i].recipe.label;
-            console.log(url[0].textContent)
+           
             url[0].textContent = data.hits[i].recipe.url;
             image.setAttribute('src', data.hits[i].recipe.image );
             
             // tally ingredients of displayed recipes
             for(ingredient of data.hits[i].recipe.ingredients){
-                ingredientsArry.push(ingredient.food)
+
+                const curIngredientname = ingredient.food.toLowerCase()
+                
+                if(ingredientsObj[curIngredientname]){
+
+                    ingredientsObj[curIngredientname].amount += ingredient.quantity;
+                }else{
+                    
+                    ingredientsObj[curIngredientname] = { amount: ingredient.quantity , ingredient: ingredient.food, measurement: ingredient.measure};
+                    if(ingredientsObj[curIngredientname].amount === 0){
+                        ingredientsObj[curIngredientname].amount = 1;
+                    }
+                }
             }
 
-
-
-
+            
+            
+            
+            
         }
-        console.log(ingredientsArry);
+        console.log(ingredientsObj);
+        
+                    for (let property in ingredientsObj) {
+                       
+                        console.log('ping')
+        
+                          const newListItem = document.createElement('li');
+                          newListItem.textContent = ingredientsObj[property].amount + ' ' + ingredientsObj[property].measurement + " " + ingredientsObj[property].ingredient ;
+                          shoppingList.appendChild(newListItem);
+                        
+                        
+                        
+                        
+                       // console.log(ingredientsObj[property].amount + ' ' + ingredientsObj[property].measurement + " " + ingredientsObj[property].ingredient )
+                        
+                                   
+                    }
     // store excess for later same interaction use
     sessionStorage.setItem('random-recipes' , JSON.stringify(data));
 
@@ -75,7 +105,7 @@ function BuildEdamamCall(searchparamsobj){
         }
     }
 
-    console.log(basecall);
+   // console.log(basecall);
     return basecall;
     
 
