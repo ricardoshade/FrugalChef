@@ -8,6 +8,13 @@ const testModalObj = {
 
 }
 
+var images = document.querySelectorAll('.recipe-card img');
+for (const image of images) {
+    if (!image.src.includes('edamam')) {
+      image.src = 'https://picsum.photos/300/300';
+    }
+}
+
 function FetchRecipesAndDisplay(event){
 
   
