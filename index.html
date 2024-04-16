@@ -67,10 +67,11 @@
             <div class="dropdown">
                 <div tabindex="0" role="button" class="btn m-1">Options</div>
                     <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                        <li class="meal-time-option" data-value="breakfast"><a>Breakfast</a></li>
-                        <li class="meal-time-option" data-value="lunch"><a>Lunch</a></li>
-                        <li class="meal-time-option" data-value="dinner"><a>Dinner</a></li>
+                        <li class="meal-time-option" data-time="Breakfast" onclick="ChangeSelectedMealtime(this)"><a>Breakfast</a></li>
+                        <li class="meal-time-option" data-time="Lunch" onclick="ChangeSelectedMealtime(this)"><a>Lunch</a></li>
+                        <li class="meal-time-option" data-time="Dinner" onclick="ChangeSelectedMealtime(this)"><a>Dinner</a></li>
                     </ul>
+                    <div id="selected-meal-time"></div>
             </div>
             <h6
             class="block -mb-2 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-inherit">
@@ -88,7 +89,7 @@
         <div class="p-6 pt-0">
             <button
             class="block w-full select-none rounded-lg bg-gradient-to-tr from-gray-900 to-gray-800 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-            type="button">
+            type="button" onclick="FetchRecipesAndDisplay(CreateObjectUsingModal())">
                 Generate
             </button>
         </div>

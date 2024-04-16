@@ -2,6 +2,8 @@ const modal = document.getElementById('modal');
 const numOfmealsinput = document.getElementById('number-of-meals');
 const budgetInput = document.getElementById('budget');
 const mealTimeOptions = modal.getElementsByClassName('meal-time-option');
+const mealTimeSelected = document.getElementById('selected-meal-time');
+let selectedMealTime = "";
 
 
 
@@ -27,14 +29,44 @@ function healthList() {
   }
 }
 
+function ChangeSelectedMealtime(event){
 
-function CreateObjectUsingModal(event){
+    selectedMealTime = event.dataset.time;
+    mealTimeSelected.textContent = selectedMealTime;
+    console.log(selectedMealTime);
+
+}
+
+
+function CreateObjectUsingModal(){
 
     const modalObj = {};
+    const healthCheckBoxes = modal.getElementsByTagName('input');
 
     modalObj.numberOfMeals = numOfmealsinput.value;
+    modalObj.budget = budgetInput.value;
+    modalObj.mealtime = selectedMealTime;
+    modalObj.health = [];
 
-    console.log(modalObj.numberOfMeals);
+
+    for(let checkbox of healthCheckBoxes){
+        
+            if(checkbox.checked){
+                modalObj.health.push(checkbox.value);
+                checkbox.checked = false;
+            };
+        
+    }
+
+    numOfmealsinput.value = '';
+    budgetInput.value = '';
+    selectedMealTime = '';
+    mealTimeSelected.textContent = '';
+    
+
+
+
+    return modalObj;
 
 }
 

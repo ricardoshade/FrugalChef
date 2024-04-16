@@ -8,6 +8,9 @@ const testModalObj = {
 
 }
 
+
+
+
 var images = document.querySelectorAll('.recipe-card img');
 for (const image of images) {
     if (!image.src.includes('edamam')) {
@@ -15,11 +18,10 @@ for (const image of images) {
     }
 }
 
-function FetchRecipesAndDisplay(event){
-
+function FetchRecipesAndDisplay(object){
   
  // create modalObj with modal inputs
- const modalObj = event ;
+ const modalObj = object ;
 
 const apiCall = BuildEdamamCall(modalObj);
 
@@ -52,10 +54,10 @@ const apiCall = BuildEdamamCall(modalObj);
                 
                 if(ingredientsObj[curIngredientname]){
 
-                    ingredientsObj[curIngredientname].amount += ingredient.quantity;
+                    ingredientsObj[curIngredientname].amount ++;
                 }else{
                     
-                    ingredientsObj[curIngredientname] = { amount: ingredient.quantity , ingredient: ingredient.food, measurement: ingredient.measure};
+                    ingredientsObj[curIngredientname] = { amount: 1 , ingredient: ingredient.food, measurement: ingredient.measure};
                     if(ingredientsObj[curIngredientname].amount === 0){
                         ingredientsObj[curIngredientname].amount = 1;
                     }
@@ -71,10 +73,10 @@ const apiCall = BuildEdamamCall(modalObj);
         
                     for (let property in ingredientsObj) {
                        
-                        console.log('ping')
+                        
         
                           const newListItem = document.createElement('li');
-                          newListItem.textContent = ingredientsObj[property].amount + ' ' + ingredientsObj[property].measurement + " " + ingredientsObj[property].ingredient ;
+                          newListItem.textContent = ingredientsObj[property].amount + ' ' + "recipe(s) need" + " " + ingredientsObj[property].ingredient ;
                           shoppingList.appendChild(newListItem);
                         
                         
@@ -103,7 +105,12 @@ function BuildEdamamCall(searchparamsobj){
     let basecall = `https://api.edamam.com/api/recipes/v2?type=any&app_id=${appId}&app_key=${appkey}&field=label&field=source&field=url&field=ingredients&field=totalTime&field=cuisineType&field=mealType&field=image&random=true`;
     if (searchparamsobj.mealtime){
        basecall = basecall.concat("&mealType=" + searchparamsobj.mealtime);
+    }else{
+        basecall = basecall.concat("&mealType=Dinner&mealType=Breakfast&mealType=Lunch&mealType=Snack&mealType=Teatime")
     }
+
+
+
     if(searchparamsobj.health){
         for(let i = 0; i < searchparamsobj.health.length; i++){
             
@@ -112,7 +119,7 @@ function BuildEdamamCall(searchparamsobj){
         }
     }
 
-   // console.log(basecall);
+     console.log(basecall);
     return basecall;
     
 
