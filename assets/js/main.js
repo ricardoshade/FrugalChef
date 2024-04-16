@@ -8,8 +8,17 @@ const testModalObj = {
 
 }
 
-function FetchRecipesAndDisplay(object){
 
+
+
+var images = document.querySelectorAll('.recipe-card img');
+for (const image of images) {
+    if (!image.src.includes('edamam')) {
+      image.src = 'https://picsum.photos/300/300';
+    }
+}
+
+function FetchRecipesAndDisplay(object){
   
  // create modalObj with modal inputs
  const modalObj = object ;
