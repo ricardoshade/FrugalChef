@@ -1,10 +1,14 @@
 //const video1El = document.getElementById('videoDay1');
 
+let currentVideoBtn;
 
 let apiIndex = 0;
 const apiYTKeys = [
-  'AIzaSyBzPdxIhS805a1DF3IUy6HHhuznNFrN8Hw',
-  'AIzaSyBzPdxIhS805a1DF3IUy6HHhuznNFrN8Hw'
+
+  'AIzaSyB6cpGWbXF__AFrSE8Pqe356TwClNtOfWw',
+  'AIzaSyDkL8GaFWdS1FIb2oxX_gLDTu8S84mK12U',
+  'AIzaSyDx65xaBMXYbHaYag_0WJ0kj8TzdnjKwe4'
+  
 ];
 // 1 'AIzaSyBzPdxIhS805a1DF3IUy6HHhuznNFrN8Hw'  OUT
 // 2 'AIzaSyB6cpGWbXF__AFrSE8Pqe356TwClNtOfWw'  a few left
@@ -18,7 +22,16 @@ const apiYTKeys = [
 
 
 function logVideoAddress(youTubeVideo) {
-  alert(youTubeVideo);
+  //alert(youTubeVideo);
+ const btnLink = document.createElement('a');
+ const btn = document.createElement('button');
+ btn.textContent = (youTubeVideo);
+ btnLink.setAttribute('href', youTubeVideo);
+ btnLink.setAttribute('target', 'blank');
+ btnLink.append(btn);
+ currentVideoBtn.parentElement.append(btnLink);
+  
+
 }
 
 // ASync Function to fetch the YouTube video
@@ -32,7 +45,9 @@ const fetchYouTubeVideo = async (recipeName) => {
 };
 
 // Function to retrieve a YouTube video with recipe key words passed in
-function getYouTubeVideoForRecipe(recipeName) {
+function getYouTubeVideoForRecipe(event) {
+  const recipeName = event.target.dataset.recipe;
+  currentVideoBtn = event.target;
   fetchYouTubeVideo(recipeName)
   .then(data => {
     let youTubeVideo = `https://www.youtube.com/watch?v=${data.items[0].id.videoId}`;
@@ -46,8 +61,9 @@ function getYouTubeVideoForRecipe(recipeName) {
           logVideoAddress(youTubeVideo);
         })
         .catch(error => {
-          window.alert('The YouTube video could not be found for this recipe.')
+          window.alert('A YouTube video could not be found for this recipe.')
         })
   })
 };
-getYouTubeVideoForRecipe('sweet potatoe pie');
+
+//getYouTubeVideoForRecipe('sweet potatoe pie');

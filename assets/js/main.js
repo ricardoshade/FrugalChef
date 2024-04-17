@@ -84,17 +84,17 @@ cardContainer.append(newSection);
 
             //create a favorite? button  and add it to the card. 
             const favBtn = document.createElement('button');
-            favBtn.textContent = "❤";
+            favBtn.textContent = "🖤";
             favBtn.setAttribute("data-recipe", JSON.stringify(data.hits[i]));
             favBtn.addEventListener('click', AddRecipeToFavorites);
             recipeCards[i].append(favBtn);
 
                //create a Video? button  and add it to the card. 
-            //    const videoBtn = document.createElement('button');
-            //    videoBtn.textContent = "🎥";
-            //    videoBtn.setAttribute("data-recipe", JSON.stringify(data.hits[i].recipe.label));
-            //    videoBtn.addEventListener('click', YouTubeVideoFunction);
-            //    recipeCards[i].append(videoBtn);
+               const videoBtn = document.createElement('button');
+               videoBtn.textContent = "🎥";
+               videoBtn.setAttribute("data-recipe", JSON.stringify(data.hits[i].recipe.label));
+               videoBtn.addEventListener('click', getYouTubeVideoForRecipe);
+               recipeCards[i].append(videoBtn);
 
 
             
@@ -160,6 +160,7 @@ function BuildEdamamCall(searchparamsobj){
 function AddRecipeToFavorites(event){
 
     //console.log(event.target);
+    event.target.textContent = "❤";
     const newRecipe = JSON.parse(event.target.dataset.recipe)
     
     
