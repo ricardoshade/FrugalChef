@@ -40,7 +40,7 @@ for(let i = 0; i < modalObj.numberOfMeals; i++){
 // </section>`;
 `<section id="day-${i+1}" class="recipe-card flex flex-col justify-center basis-1/2 max-w-sm rounded overflow-hidden shadow-2xl bg-slate-50/75"> <!-- Day 1 card -->
                 <img src="#" alt="#">
-                <h3 class="font-bold text-xl mb-2 text-gray-700 text-base">Day 1</h3>
+                <h3 class="font-bold text-xl mb-2 text-gray-700 text-base">Day ${i+1}</h3>
                 <p class="meal-title font-bold text-xl mb-2 text-gray-700 text-bases">${modalObj.mealtime}:</p>
                 <p id="dinner-day-${i+1}" class="meal-description text-gray-700 text-base"></p>
                 <span id="cost-day-${i+1}"></span>
