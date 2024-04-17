@@ -9,3 +9,33 @@ body {
   background-position: center;
   background-attachment: fixed;
 }
+
+.recipe-card {
+    margin: 2%;
+}
+
+#all-containers {
+
+}
+
+img {
+    width: auto;
+}
+
+p {
+    padding: 4%;
+}
+
+h3 {
+    padding: 4%;
+}
+
+ul {
+    
+    list-style-type: circle;
+}
+
+#shopping-list-card {
+    margin: 0 25% 0 25%;
+    display: 
+}
