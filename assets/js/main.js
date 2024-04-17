@@ -160,7 +160,7 @@ function BuildEdamamCall(searchparamsobj){
 function AddRecipeToFavorites(event){
 
     //console.log(event.target);
-    const newRecipe = event.target.dataset.recipe
+    const newRecipe = JSON.parse(event.target.dataset.recipe)
     
     
     if(localStorage.getItem('favorites')){
