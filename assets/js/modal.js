@@ -20,9 +20,9 @@ function healthList() {
   for (var i = 0; i < healthListArr.length; i++) {
       var li = document.createElement("li");
       li.innerHTML = `
-          <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-              <input id="checkbox-item-${i}" type="checkbox" value="${healthListArr[i]}" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-              <label for="checkbox-item-${i}" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">${healthListArr[i]}</label>
+          <div class="flex items-center p-2 rounded ">
+              <input id="checkbox-item-${i}" type="checkbox" value="${healthListArr[i]}" class="w-4 h-4 text-black-600 bg-gray-100 border-gray-700 rounded focus:ring-grey-500 dark:focus:ring-grey-600 dark:ring-offset-grey-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+              <label for="checkbox-item-${i}" class="w-full ms-2 text-sm font-medium text-black-900 rounded dark:text-black-300">${healthListArr[i]}</label>
           </div>
       `;
       healthList.appendChild(li);
@@ -44,7 +44,6 @@ function CreateObjectUsingModal(){
     const healthCheckBoxes = modal.getElementsByTagName('input');
 
     modalObj.numberOfMeals = numOfmealsinput.value;
-    modalObj.budget = budgetInput.value;
     modalObj.mealtime = selectedMealTime;
     modalObj.health = [];
 
@@ -59,7 +58,6 @@ function CreateObjectUsingModal(){
     }
 
     numOfmealsinput.value = '';
-    budgetInput.value = '';
     selectedMealTime = '';
     mealTimeSelected.textContent = '';
     
@@ -70,6 +68,12 @@ function CreateObjectUsingModal(){
 
 }
 
+//hide modal after clicking generate button
+const closeModalButton = document.getElementById('generateButton');
+const myModal = document.getElementById('modal');
 
+closeModalButton.addEventListener('click', function() {
+    myModal.classList.add('hidden'); 
+});
 
 healthList();

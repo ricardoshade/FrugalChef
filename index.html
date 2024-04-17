@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html  datalang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,22 +46,9 @@
                 placeholder=" " />
             <label
                 class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.1] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-gray-900 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
-                1-7
+                1-20
             </label>
             </div>
-            <h6
-            class="block -mb-2 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-inherit">
-            Budget:
-        </h6>
-        <div class="relative h-11 w-full min-w-[200px]">
-           <!-- Input for budget -->
-            <input id="budget"
-            class="w-full h-full px-3 py-3 font-sans text-sm font-normal transition-all bg-transparent border rounded-md peer border-blue-gray-200 border-t-transparent text-blue-gray-700 outline outline-0 placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
-            placeholder=" " />
-            <label
-            class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.1] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-gray-900 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">e.g. 100
-            </label>
-        </div>
             <h6
             class="block -mb-2 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-inherit">Meal Time:
             </h6>
@@ -79,17 +66,17 @@
             class="block -mb-2 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-inherit">
             Allergens:
             </h6> 
-            <button id="dropdownBgHoverButton" data-dropdown-toggle="dropdownBgHover" class="text-black bg-grey-700 hover:bg-grey-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button"><div tabindex="0" role="button" class="btn m-1">Options</div><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
+            <button id="dropdownBgHoverButton" data-dropdown-toggle="dropdownBgHover" class=" focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center " type="button"><div tabindex="0" role="button" class="btn m-1">Options</div><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
                 
                 <!-- Dropdown menu for allergens-->
-                <div id="dropdownBgHover" class="dropdown dropdown-top z-10 hidden w-48 bg-white rounded-lg shadow dark:bg-gray-700 overflow-auto h-20">
-                    <ul class="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownBgHoverButton" id="health-list">
+                <div id="dropdownBgHover" class="dropdown dropdown-top z-10 hidden w-48 h-40 bg-white rounded-lg shadow text-black-700 overflow-auto h-20">
+                    <ul class="p-3 space-y-3 text-sm text-black-700 dark:text-black-200" aria-labelledby="dropdownBgHoverButton" id="health-list">
                     </ul>
                 </div>
             </div>
             
         <div class="p-6 pt-0">
-            <button
+            <button id="generateButton"
             class="block w-full select-none rounded-lg bg-gradient-to-tr from-gray-900 to-gray-800 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
             type="button" onclick="FetchRecipesAndDisplay(CreateObjectUsingModal())">
                 Generate
@@ -129,7 +116,8 @@
                 <p id="dinner-day-4" class="meal-description text-gray-700 text-base"></p>
                 <span id="cost-day-4"></span>
             </section>
-            <section id="day-5" class="recipe-card flex flex-col justify-center basis-1/2 max-w-sm rounded overflow-hidden shadow-2xl bg-slate-50/75"> <!-- Day 5 card -->
+            <section id="day-5" class="recipe-card flex flex-col justify-center basis-1/2 p-5 max-w-sm rounded overflow-hidden shadow-lg"> <!-- Day 5 card -->
+                <h3>Day 5</h3>
                 <img src="#" alt="#">
                 <h3 class="font-bold text-xl mb-2 text-gray-700 text-base">Day 5</h3>
                 <p class="meal-title font-bold text-xl mb-2 text-gray-700 text-base">Dinner:</p>
@@ -163,11 +151,12 @@
     </main>
 
     <footer>
-
+        <a href="Favs.html"><button class="block w-full select-none rounded-lg bg-gradient-to-tr from-gray-900 to-gray-800 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">Favorites page</button></a>
     </footer>
     <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/dialog.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/modal.js"></script>
+    <script src="assets/js/youtube.js"></script>
 </body>
 </html>
