@@ -30,13 +30,22 @@ const apiCall = BuildEdamamCall(modalObj);
 
 for(let i = 0; i < modalObj.numberOfMeals; i++){
     const newSection = document.createElement('div');
-    newSection.innerHTML =  `<section id="day-${i+1}" class="recipe-card flex flex-col justify-center basis-1/2 p-5 max-w-sm rounded overflow-hidden shadow-lg"> <!-- Day ${i+1} card -->
-    <h3>Day ${i+1}</h3>
-    <img src="#" alt="#">
-    <p class="meal-title">${modalObj.mealtime}:</p>
-    <p id="dinner-day-${i+1}" class="meal-description"></p>
-    <span id="cost-day-${i+1}"></span>
-</section>`;
+    newSection.innerHTML = 
+//      `<section id="day-${i+1}" class="recipe-card flex flex-col justify-center basis-1/2 p-5 max-w-sm rounded overflow-hidden shadow-lg"> <!-- Day ${i+1} card -->
+//     <h3>Day ${i+1}</h3>
+//     <img src="#" alt="#">
+//     <p class="meal-title">${modalObj.mealtime}:</p>
+//     <p id="dinner-day-${i+1}" class="meal-description"></p>
+//     <span id="cost-day-${i+1}"></span>
+// </section>`;
+`<section id="day-${i+1}" class="recipe-card flex flex-col justify-center basis-1/2 max-w-sm rounded overflow-hidden shadow-2xl bg-slate-50/75"> <!-- Day 1 card -->
+                <img src="#" alt="#">
+                <h3 class="font-bold text-xl mb-2 text-gray-700 text-base">Day 1</h3>
+                <p class="meal-title font-bold text-xl mb-2 text-gray-700 text-bases">${modalObj.mealtime}:</p>
+                <p id="dinner-day-${i+1}" class="meal-description text-gray-700 text-base"></p>
+                <span id="cost-day-${i+1}"></span>
+            </section>`;
+
 
 cardContainer.append(newSection);
 
