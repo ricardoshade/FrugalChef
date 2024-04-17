@@ -68,6 +68,11 @@ function CreateObjectUsingModal(){
 
 }
 
+//hide modal after clicking generate button
+const closeModalButton = document.getElementById('generateButton');
+const myModal = document.getElementById('modal');
 
+closeModalButton.addEventListener('click', function() {
+    myModal.classList.add('hidden'); 
 
 healthList();
