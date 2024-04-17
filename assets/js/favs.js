@@ -31,6 +31,15 @@ function SetUpFavsPage(){
            
             url[0].textContent = data[i].recipe.url;
             image.setAttribute('src', data[i].recipe.image );
+
+
+            const videoBtn = document.createElement('button');
+               videoBtn.textContent = "🎥";
+               videoBtn.setAttribute("data-recipe", JSON.stringify(data[i].recipe.label));
+               videoBtn.addEventListener('click', getYouTubeVideoForRecipe);
+               recipeCards[i].append(videoBtn);
+
+
         }
     }
 SetUpFavsPage();
