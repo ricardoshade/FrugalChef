@@ -74,5 +74,6 @@ const myModal = document.getElementById('modal');
 
 closeModalButton.addEventListener('click', function() {
     myModal.classList.add('hidden'); 
+});
 
 healthList();
