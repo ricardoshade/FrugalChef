@@ -1,6 +1,7 @@
 const appId = '196c237a';
 const appkey = '9d8fce1dbd4a46fa288a0e8aa92c11e6';
 const shoppingList = document.getElementById('shopping-list-items');
+const cardContainer = document.getElementById('all-containers');
 const testModalObj = {
 
     mealtime: "Dinner",
@@ -24,6 +25,22 @@ function FetchRecipesAndDisplay(object){
  const modalObj = object ;
 
 const apiCall = BuildEdamamCall(modalObj);
+//create the recipe cards and place them in the all-containers section
+    cardContainer.innerHTML = '';
+
+for(let i = 0; i < modalObj.numberOfMeals; i++){
+    const newSection = document.createElement('div');
+    newSection.innerHTML =  `<section id="day-${i+1}" class="recipe-card flex flex-col justify-center basis-1/2 p-5 max-w-sm rounded overflow-hidden shadow-lg"> <!-- Day ${i+1} card -->
+    <h3>Day ${i+1}</h3>
+    <img src="#" alt="#">
+    <p class="meal-title">${modalObj.mealtime}:</p>
+    <p id="dinner-day-${i+1}" class="meal-description"></p>
+    <span id="cost-day-${i+1}"></span>
+</section>`;
+
+cardContainer.append(newSection);
+
+}
 
 
     fetch(apiCall).then(function (response){
@@ -32,6 +49,7 @@ const apiCall = BuildEdamamCall(modalObj);
     
     }).then(function (data){
         console.log(data);
+
         //create array to store total ingredients for shopping list
         const ingredientsObj = {};
     // get cards that hold data
@@ -64,7 +82,21 @@ const apiCall = BuildEdamamCall(modalObj);
                 }
             }
 
-            
+            //create a favorite? button  and add it to the card. 
+            const favBtn = document.createElement('button');
+            favBtn.textContent = "❤";
+            favBtn.setAttribute("data-recipe", JSON.stringify(data.hits[i]));
+            favBtn.addEventListener('click', AddRecipeToFavorites);
+            recipeCards[i].append(favBtn);
+
+               //create a Video? button  and add it to the card. 
+            //    const videoBtn = document.createElement('button');
+            //    videoBtn.textContent = "🎥";
+            //    videoBtn.setAttribute("data-recipe", JSON.stringify(data.hits[i].recipe.label));
+            //    videoBtn.addEventListener('click', YouTubeVideoFunction);
+            //    recipeCards[i].append(videoBtn);
+
+
             
             
             
@@ -121,6 +153,31 @@ function BuildEdamamCall(searchparamsobj){
 
      console.log(basecall);
     return basecall;
+    
+
+}
+
+function AddRecipeToFavorites(event){
+
+    //console.log(event.target);
+    const newRecipe = event.target.dataset.recipe
+    
+    
+    if(localStorage.getItem('favorites')){
+
+        const favArry = JSON.parse(localStorage.getItem('favorites'));
+        if(!favArry.includes(newRecipe)){
+            favArry.push(newRecipe);
+        }
+        localStorage.setItem('favorites', JSON.stringify(favArry));
+    
+    }else{
+    
+        const favArry = [];
+        favArry.push(newRecipe);
+        localStorage.setItem('favorites', JSON.stringify(favArry));
+    
+    }
     
 
 }
