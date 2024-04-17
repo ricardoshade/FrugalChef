@@ -44,7 +44,6 @@ function CreateObjectUsingModal(){
     const healthCheckBoxes = modal.getElementsByTagName('input');
 
     modalObj.numberOfMeals = numOfmealsinput.value;
-    modalObj.budget = budgetInput.value;
     modalObj.mealtime = selectedMealTime;
     modalObj.health = [];
 
@@ -59,7 +58,6 @@ function CreateObjectUsingModal(){
     }
 
     numOfmealsinput.value = '';
-    budgetInput.value = '';
     selectedMealTime = '';
     mealTimeSelected.textContent = '';
     
