@@ -9,18 +9,20 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
     <link href="./assets/css/style.css" rel="stylesheet"/>
 
-    <title>Frugal Chef</title>
+    <title>Recipe Roulette</title>
 </head>
 
 <body>
     <header id="page-title" class="flex justify-center">
-        <h1 class = "text-3xl font-bold underline">Frugal Chef</h1>
+        <h1 class = "text-6xl font-bold font-bold mb-2 text-white">Recipe Roulette</h1>
     </header>
 
     <main class="flex flex-col justify-center">
-        <button class="select-none rounded-lg bg-yellow-900 py-3 px-6 text-center align-middle text-xs font-bold text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-yellow-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:opacity-50 disabled:shadow-none" type="button" data-dialog-target="sign-in-dialog">
-        Generate Recipes
-        </button>
+        <section id="generate-recipe-button" class="flex flex-row justify-center">
+            <button class="select-none rounded-lg bg-indigo-500 py-3 px-6 text-center align-middle text-s font-bold text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-yellow-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:opacity-50 disabled:shadow-none w-60" type="button" data-dialog-target="sign-in-dialog">
+            Generate Recipes
+            </button>
+        </section>
         <div id="modal" data-dialog-backdrop="sign-in-dialog" data-dialog-backdrop-close="true"
         class="pointer-events-none fixed inset-0 z-[999] grid h-screen w-screen place-items-center bg-black bg-opacity-60 opacity-0 backdrop-blur-sm transition-opacity duration-300">
         <!-- start of modal -->
@@ -44,7 +46,7 @@
                 placeholder=" " />
             <label
                 class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.1] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-gray-900 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
-                1-7
+                1-20
             </label>
             </div>
             <h6
@@ -67,14 +69,14 @@
             <button id="dropdownBgHoverButton" data-dropdown-toggle="dropdownBgHover" class=" focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center " type="button"><div tabindex="0" role="button" class="btn m-1">Options</div><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg></button>
                 
                 <!-- Dropdown menu for allergens-->
-                <div id="dropdownBgHover" class="dropdown dropdown-top z-10 hidden w-48 bg-white rounded-lg shadow text-black-700 overflow-auto h-20">
+                <div id="dropdownBgHover" class="dropdown dropdown-top z-10 hidden w-48 h-40 bg-white rounded-lg shadow text-black-700 overflow-auto h-20">
                     <ul class="p-3 space-y-3 text-sm text-black-700 dark:text-black-200" aria-labelledby="dropdownBgHoverButton" id="health-list">
                     </ul>
                 </div>
             </div>
             
         <div class="p-6 pt-0">
-            <button
+            <button id="generateButton"
             class="block w-full select-none rounded-lg bg-gradient-to-tr from-gray-900 to-gray-800 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
             type="button" onclick="FetchRecipesAndDisplay(CreateObjectUsingModal())">
                 Generate
@@ -82,61 +84,62 @@
         </div>
         </div>
     </div>  
-        <section id="all-containers" class="flex flex-row flex-wrap justify-center p-8">
+        <section id="all-containers" class="flex flex-row flex-wrap justify-center">
             <!-- <section id="modal-pop-up"> 
                 <h2>Generate List</h2>
             </section> -->
-            <section id="day-1" class="recipe-card flex flex-col justify-center basis-1/2 p-5 max-w-sm rounded overflow-hidden shadow-lg"> <!-- Day 1 card -->
-                <h3>Day 1</h3>
+            <section id="day-1" class="recipe-card flex flex-col justify-center basis-1/2 max-w-sm rounded overflow-hidden shadow-2xl bg-slate-50/75"> <!-- Day 1 card -->
                 <img src="#" alt="#">
-                <p class="meal-title">Dinner:</p>
-                <p id="dinner-day-1" class="meal-description"></p>
+                <h3 class="font-bold text-xl mb-2 text-gray-700 text-base">Day 1</h3>
+                <p class="meal-title font-bold text-xl mb-2 text-gray-700 text-bases">Dinner:</p>
+                <p id="dinner-day-1" class="meal-description text-gray-700 text-base"></p>
                 <span id="cost-day-1"></span>
             </section>
-            <section id="day-2" class="recipe-card flex flex-col justify-center basis-1/2 p-5 max-w-sm rounded overflow-hidden shadow-lg"> <!-- Day 2 card -->
-                <h3>Day 2</h3>
+            <section id="day-2" class="recipe-card flex flex-col justify-center basis-1/2 max-w-sm rounded overflow-hidden shadow-2xl bg-slate-50/75"> <!-- Day 2 card -->
                 <img src="#" alt="#">
-                <p class="meal-title">Dinner:</p>
-                <p id="dinner-day-2" class="meal-description"></p>
+                <h3 class="font-bold text-xl mb-2 text-gray-700 text-base">Day 2</h3>
+                <p class="meal-title font-bold text-xl mb-2 text-gray-700 text-base">Dinner:</p>
+                <p id="dinner-day-2" class="meal-description text-gray-700 text-base"></p>
                 <span id="cost-day-2"></span>
             </section>
-            <section id="day-3" class="recipe-card flex flex-col justify-center basis-1/2 p-5 max-w-sm rounded overflow-hidden shadow-lg"> <!-- Day 3 card -->
-                <h3>Day 3</h3>
+            <section id="day-3" class="recipe-card flex flex-col justify-center basis-1/2 max-w-sm rounded overflow-hidden shadow-2xl bg-slate-50/75"> <!-- Day 3 card -->
                 <img src="#" alt="#">
-                <p class="meal-title">Dinner:</p>
-                <p id="dinner-day-3" class="meal-description"></p>
+                <h3 class="font-bold text-xl mb-2 text-gray-700 text-base">Day 3</h3>
+                <p class="meal-title font-bold text-xl mb-2 text-gray-700 text-base">Dinner:</p>
+                <p id="dinner-day-3" class="meal-description text-gray-700 text-base"></p>
                 <span id="cost-day-3"></span>
             </section>
-            <section id="day-4" class="recipe-card flex flex-col justify-center basis-1/2 p-5 max-w-sm rounded overflow-hidden shadow-lg"> <!-- Day 4 card -->
-                <h3>Day 4</h3>
+            <section id="day-4" class="recipe-card flex flex-col justify-center basis-1/2 max-w-sm rounded overflow-hidden shadow-2xl bg-slate-50/75"> <!-- Day 4 card -->
                 <img src="#" alt="#">
-                <p class="meal-title">Dinner:</p>
-                <p id="dinner-day-4" class="meal-description"></p>
+                <h3 class="font-bold text-xl mb-2 text-gray-700 text-base">Day 4</h3>
+                <p class="meal-title font-bold text-xl mb-2 text-gray-700 text-base">Dinner:</p>
+                <p id="dinner-day-4" class="meal-description text-gray-700 text-base"></p>
                 <span id="cost-day-4"></span>
             </section>
             <section id="day-5" class="recipe-card flex flex-col justify-center basis-1/2 p-5 max-w-sm rounded overflow-hidden shadow-lg"> <!-- Day 5 card -->
                 <h3>Day 5</h3>
                 <img src="#" alt="#">
-                <p class="meal-title">Dinner:</p>
-                <p id="dinner-day-5" class="meal-description"></p>
+                <h3 class="font-bold text-xl mb-2 text-gray-700 text-base">Day 5</h3>
+                <p class="meal-title font-bold text-xl mb-2 text-gray-700 text-base">Dinner:</p>
+                <p id="dinner-day-5" class="meal-description text-gray-700 text-base"></p>
                 <span id="cost-day-5"></span>
             </section>
-            <section id="day-6" class="recipe-card flex flex-col justify-center basis-1/2 p-5 max-w-sm rounded overflow-hidden shadow-lg"> <!-- Day 6 card -->
-                <h3>Day 6</h3>
+            <section id="day-6" class="recipe-card flex flex-col justify-center basis-1/2 max-w-sm rounded overflow-hidden shadow-2xl bg-slate-50/75"> <!-- Day 6 card -->
                 <img src="#" alt="#">
-                <p class="meal-title">Dinner:</p>
-                <p id="dinner-day-6" class="meal-description"></p>
+                <h3 class="font-bold text-xl mb-2 text-gray-700 text-base">Day 6</h3>
+                <p class="meal-title font-bold text-xl mb-2 text-gray-700 text-base">Dinner:</p>
+                <p id="dinner-day-6" class="meal-description text-gray-700 text-base"></p>
                 <span id="cost-day-6"></span>
             </section>
-            <section id="day-7" class="recipe-card flex flex-col justify-center basis-1/2 p-5 max-w-sm rounded overflow-hidden shadow-lg"> <!-- Day 7 card -->
-                <h3>Day 7</h3>
+            <section id="day-7" class="recipe-card flex flex-col justify-center basis-1/2 max-w-sm rounded overflow-hidden shadow-2xl bg-slate-50/75"> <!-- Day 7 card -->
                 <img src="#" alt="#">
-                <p class="meal-title">Dinner:</p>
-                <p id="dinner-day-7" class="meal-description"></p>
+                <h3 class="font-bold text-xl mb-2 text-gray-700 text-base">Day 7</h3>
+                <p class="meal-title font-bold text-xl mb-2 text-gray-700 text-base">Dinner:</p>
+                <p id="dinner-day-7" class="meal-description text-gray-700 text-base"></p>
                 <span id="cost-day-7"></span>
             </section>
         </section>
-        <section id="shopping-list-card"> <!-- Shopping list card -->
+        <section id="shopping-list-card" class="flex flex-col align-middle rounded overflow-hidden shadow-2xl bg-white font-bold text-xl mb-2 text-gray-700 text-base"> <!-- Shopping list card -->
             <h3>
                 Shopping List
             </h3>
@@ -145,7 +148,6 @@
             </ul>
         </section>
 
-        
     </main>
 
     <footer>
@@ -155,5 +157,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/modal.js"></script>
+    <script src="assets/js/youtube.js"></script>
 </body>
 </html>
