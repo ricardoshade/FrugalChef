@@ -73,7 +73,6 @@ const closeModalButton = document.getElementById('generateButton');
 const myModal = document.getElementById('modal');
 const generateRecipesButton = document.getElementById('generate-recipe-button');
 
-
 generateRecipesButton.addEventListener('click', function() {
     myModal.classList.remove('hidden'); // Show the modal
 });
@@ -81,21 +80,5 @@ generateRecipesButton.addEventListener('click', function() {
 closeModalButton.addEventListener('click', function() {
     myModal.classList.add('hidden'); 
 });
-
-
-
-// const generateRecipesButton = document.getElementById('generateButton');
-// const modal = document.getElementById('modal');
-
-// generateRecipesButton.addEventListener('click', function() {
-//     modal.classList.remove('hidden'); // Show the modal
-// });
-
-// // If you have a close button in the modal with the id 'closeModalButton'
-// const closeModalButton = document.getElementById('closeModalButton');
-
-// closeModalButton.addEventListener('click', function() {
-//     modal.classList.add('hidden'); // Hide the modal
-// });
 
 healthList();
