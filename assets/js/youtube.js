@@ -22,7 +22,7 @@ function logVideoAddress(youTubeVideo) {
 }
 
 // ASync Function to fetch the YouTube video
-const fetchYouTubeVideo = async (recipeName) => {
+const fetchYouTubeVideo = async (event) => {
     let trimmedRecipeName = recipeName.trim() + '+recipe+how+to';
     let concatRecipeName = trimmedRecipeName.replaceAll(' ', '+');
     let apiYouTubeCall = `https://www.googleapis.com/youtube/v3/search?part=snippet&key=${apiYTKeys[apiIndex]}&type=video&maxResults=1&q=${concatRecipeName}`;
@@ -50,4 +50,7 @@ function getYouTubeVideoForRecipe(recipeName) {
         })
   })
 };
+
+
+button -> click
 getYouTubeVideoForRecipe('sweet potatoe pie');
