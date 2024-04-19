@@ -4,11 +4,12 @@ let currentVideoBtn;
 
 let apiIndex = 0;
 const apiYTKeys = [
-
-  'AIzaSyB6cpGWbXF__AFrSE8Pqe356TwClNtOfWw',
-  'AIzaSyDkL8GaFWdS1FIb2oxX_gLDTu8S84mK12U',
-  'AIzaSyDx65xaBMXYbHaYag_0WJ0kj8TzdnjKwe4'
-  
+ 'AIzaSyDx65xaBMXYbHaYag_0WJ0kj8TzdnjKwe4',
+ 'AIzaSyBVfkPJFu_HvUnAsL8z5pGWP1BAhYfUeBQ',
+ 'AIzaSyCZhbZrOAjKct6f_n17TCyL1pHEogHbHTY',
+ 'AIzaSyDNv8m1V2HCWSd8Sqf5aE8unIb4WYoesKQ',
+ 'AIzaSyC5HVomrvJWmjCyo1ZNYuVscce7LB_SqrQ',
+ 'AIzaSyBieqmFw6oSSEM0PM0c_6ueVGWzQn-wO-A'
 ];
 // 1 'AIzaSyBzPdxIhS805a1DF3IUy6HHhuznNFrN8Hw'  OUT
 // 2 'AIzaSyB6cpGWbXF__AFrSE8Pqe356TwClNtOfWw'  a few left
