@@ -4,12 +4,12 @@ let currentVideoBtn;
 
 let apiIndex = 0;
 const apiYTKeys = [
+ 'AIzaSyBieqmFw6oSSEM0PM0c_6ueVGWzQn-wO-A',
+ 'AIzaSyC5HVomrvJWmjCyo1ZNYuVscce7LB_SqrQ',
  'AIzaSyDx65xaBMXYbHaYag_0WJ0kj8TzdnjKwe4',
  'AIzaSyBVfkPJFu_HvUnAsL8z5pGWP1BAhYfUeBQ',
  'AIzaSyCZhbZrOAjKct6f_n17TCyL1pHEogHbHTY',
- 'AIzaSyDNv8m1V2HCWSd8Sqf5aE8unIb4WYoesKQ',
- 'AIzaSyC5HVomrvJWmjCyo1ZNYuVscce7LB_SqrQ',
- 'AIzaSyBieqmFw6oSSEM0PM0c_6ueVGWzQn-wO-A'
+ 'AIzaSyDNv8m1V2HCWSd8Sqf5aE8unIb4WYoesKQ'
 ];
 // 1 'AIzaSyBzPdxIhS805a1DF3IUy6HHhuznNFrN8Hw'  OUT
 // 2 'AIzaSyB6cpGWbXF__AFrSE8Pqe356TwClNtOfWw'  a few left
@@ -39,6 +39,7 @@ function logVideoAddress(youTubeVideo) {
 const fetchYouTubeVideo = async (recipeName) => {
     let trimmedRecipeName = recipeName.trim() + '+recipe+how+to';
     let concatRecipeName = trimmedRecipeName.replaceAll(' ', '+');
+    debugger;
     let apiYouTubeCall = `https://www.googleapis.com/youtube/v3/search?part=snippet&key=${apiYTKeys[apiIndex]}&type=video&maxResults=1&q=${concatRecipeName}`;
     const response = await fetch(apiYouTubeCall);
     const data = await response.json();
@@ -49,6 +50,7 @@ const fetchYouTubeVideo = async (recipeName) => {
 function getYouTubeVideoForRecipe(event) {
   const recipeName = event.target.dataset.recipe;
   currentVideoBtn = event.target;
+  debugger;
   fetchYouTubeVideo(recipeName)
   .then(data => {
     let youTubeVideo = `https://www.youtube.com/watch?v=${data.items[0].id.videoId}`;
